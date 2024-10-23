@@ -96,13 +96,11 @@
         </div>
     </footer>
 
-    <!-- Скрипт для появления изображения дрона при скролле -->
     <img src="avata2.webp" alt="DJI AVATA 2" id="droneImage" class="hidden-drone">
 
     <script src="scripts.js"></script>
 
     <script>
-        // Скрипт для воспроизведения видео при наведении мыши
         const videos = document.querySelectorAll('.video-item video');
 
         videos.forEach(video => {
@@ -111,7 +109,7 @@
             });
             video.addEventListener('mouseleave', () => {
                 video.pause();
-                video.currentTime = 0; // сброс на начало
+                video.currentTime = 0; 
             });
         });
     </script>
