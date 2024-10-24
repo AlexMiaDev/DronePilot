@@ -1,3 +1,11 @@
+/* Определяем переменные для цветов */
+:root {
+    --primary-color: #ff5722;
+    --secondary-color: #e64a19;
+    --text-color: #333333;
+    --background-color: #f9f9f9;
+}
+
 /* Основные стили */
 * {
     margin: 0;
@@ -7,9 +15,9 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    color: #333333;
+    color: var(--text-color);
+    background-color: var(--background-color);
     line-height: 1.6;
-    background-color: #f9f9f9;
 }
 
 /* Хедер */
@@ -57,7 +65,7 @@ header .btn {
     padding: 12px 24px;
     font-size: 1.2rem;
     color: white;
-    background-color: #ff5722;
+    background-color: var(--primary-color);
     border: none;
     border-radius: 5px;
     text-decoration: none;
@@ -66,8 +74,67 @@ header .btn {
 }
 
 header .btn:hover {
-    background-color: #e64a19;
+    background-color: var(--secondary-color);
 }
+
+.fixed-contact-info {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.contact-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: #ff5722;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s ease;
+}
+
+.contact-link i {
+    margin-right: 8px;
+    font-size: 1.3rem;
+}
+
+.contact-link:hover {
+    color: #e64a19;
+    transform: scale(1.05);
+}
+
+/* Стили для всплывающих подсказок */
+.tooltip {
+    visibility: hidden; /* Скрыто по умолчанию */
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%; /* Размещаем подсказку над иконкой */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap; /* Чтобы текст был в одной строке */
+}
+
+/* Появление всплывающей подсказки при наведении */
+.contact-link:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
 
 /* О нас (about us) */
 .video-wrapper {
@@ -102,11 +169,11 @@ h2 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px; /* Равные отступы между видео */
+    gap: 20px;
 }
 
 .video-item {
-    flex: 1 1 30%; /* Каждое видео занимает 30% ширины */
+    flex: 1 1 30%;
     max-width: 300px;
     margin: 0 auto;
     position: relative;
@@ -137,76 +204,160 @@ h2 {
     border-radius: 5px;
 }
 
-/* Секция обратной связи */
-.contact-section {
-    background-color: #222;
-    color: white;
+/* Секция контактной информации и соцсетей */
+.contact-info-section {
+    background-color: var(--background-color);
     padding: 60px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    margin-top: 60px;
+    text-align: center;
+}
+
+.contact-info-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.contact-info-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.contact-details p {
+    font-size: 1.2rem;
+}
+
+.contact-details a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
+/* Стили для иконок соцсетей */
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icon img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.social-icon img:hover {
+    transform: scale(1.1);
+}
+
+/* Секция формы Contact Us */
+/* Секция формы Contact Us */
+.contact-section {
+    background-color: #f0f0f5; /* Светло-серый фон */
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 20px; /* Округленные углы секции */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Тень для глубины */
+    max-width: 900px; /* Ограничиваем ширину секции */
+    margin: 50px auto; /* Центрирование секции */
+}
+
+.contact-section h2 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    color: #333; /* Темный цвет для заголовка */
+    font-weight: bold;
 }
 
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
     text-align: left;
 }
 
 .contact-form label {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 10px;
+    display: block;
+    color: #666;
 }
 
 .contact-form input,
 .contact-form textarea {
-    margin-bottom: 20px;
-    padding: 10px;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
-    color: white;
     width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Сделаем поля более округлыми */
+    font-size: 1.1rem;
+    color: #333;
+    background-color: #fff;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.05); /* Легкая внутренняя тень */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-    color: #aaa;
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #ff5722;
+    box-shadow: 0 0 10px rgba(255, 87, 34, 0.3); /* Подсветка при фокусе */
 }
 
+.contact-form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+/* Кнопка отправки */
 .contact-form button {
-    padding: 12px 24px;
+    padding: 15px 30px;
+    font-size: 1.3rem;
     background-color: #ff5722;
-    border: none;
-    border-radius: 5px;
     color: white;
-    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px; /* Округлая кнопка */
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .contact-form button:hover {
     background-color: #e64a19;
+    transform: translateY(-3px); /* Подъем при наведении */
 }
 
-.icon-drone {
-    background-image: url('drone-icon.png');
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-    background-size: contain;
+.contact-form button:active {
+    transform: translateY(1px); /* Легкий эффект нажатия */
 }
 
-/* Адаптация под мобильные устройства */
+/* Адаптация секции под мобильные устройства */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 40px 20px;
+    }
+
+    .contact-form {
+        padding: 0 10px;
+    }
+
+    .contact-form button {
+        width: 100%; /* Кнопка на всю ширину экрана на мобильных устройствах */
+    }
+}
+
+
+
+/* Медиазапросы для адаптации */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2.5rem;
     }
-    
+
     header p {
         font-size: 1.2rem;
     }
@@ -214,9 +365,13 @@ h2 {
     .video-item {
         width: 100%;
     }
-    
+
     .video-item h3 {
         font-size: 1rem;
+    }
+
+    .contact-form {
+        padding: 0 10px;
     }
 }
 
@@ -224,22 +379,4 @@ h2 {
     .video-item {
         width: 45%;
     }
-}
-
-
-/* Стиль для скрытого изображения дрона */
-.hidden-drone {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 200px;
-    opacity: 0;
-    transform: translateY(100px);
-    transition: all 0.5s ease-out;
-}
-
-/* Стиль для отображаемого изображения */
-.visible-drone {
-    opacity: 1;
-    transform: translateY(0);
 }
