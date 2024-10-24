@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="fixed-contact-info">
+        <a href="tel:+13057337757" class="contact-link">
+            <i class="fas fa-phone-alt"></i> 305-733-7757
+        </a>
+        <a href="mailto:Siniurin@gmail.com" class="contact-link">
+            <i class="fas fa-envelope"></i> Siniurin@gmail.com
+        </a>
+        <a href="https://www.instagram.com/alekseidev24/" target="_blank" class="contact-link">
+            <i class="fab fa-instagram"></i> @alekseidev24
+        </a>
+    </div>
+    
+    
 
     <header>
         <video autoplay muted loop id="headerVideo">
@@ -63,26 +76,45 @@
         </div>
     </section>
 
+    <!-- Контактная информация и социальные сети -->
+    <section id="contact-info" class="section contact-info-section">
+        <div class="container">
+            <h2>Contact Information</h2>
+            <p>Feel free to reach out via phone, email, or connect with us on social media!</p>
+
+            <div class="contact-details">
+                <p><strong>Phone:</strong> <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                <p><strong>Email:</strong> <a href="mailto:Siniurin@gmail.com">Siniurin@gmail.com</a></p>
+            </div>
+
+            <div class="social-icons">
+                <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                    <img src="images/facebook-icon.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                    <img src="images/instagram-icon.png" alt="Instagram">
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" class="social-icon">
+                    <img src="images/linkedin-icon.png" alt="LinkedIn">
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-icon">
+                    <img src="images/twitter-icon.png" alt="Twitter">
+                </a>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="section contact-section">
         <div class="container">
             <h2>Contact Us</h2>
             <form action="send-email.php" method="POST" class="contact-form">
-                <label for="name">
-                    <span class="icon-drone"></span>
-                    Name:
-                </label>
+                <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
                 
-                <label for="email">
-                    <span class="icon-drone"></span>
-                    Email:
-                </label>
+                <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 
-                <label for="message">
-                    <span class="icon-drone"></span>
-                    Message:
-                </label>
+                <label for="message">Message:</label>
                 <textarea id="message" name="message" required></textarea>
                 
                 <button type="submit" class="btn btn-drone">Send</button>
@@ -96,11 +128,10 @@
         </div>
     </footer>
 
-    <img src="avata2.webp" alt="DJI AVATA 2" id="droneImage" class="hidden-drone">
-
     <script src="scripts.js"></script>
 
     <script>
+        // Скрипт для воспроизведения видео при наведении мыши
         const videos = document.querySelectorAll('.video-item video');
 
         videos.forEach(video => {
@@ -109,10 +140,14 @@
             });
             video.addEventListener('mouseleave', () => {
                 video.pause();
-                video.currentTime = 0; 
+                video.currentTime = 0; // сброс на начало
             });
         });
     </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
 
 </body>
+</div>
 </html>
